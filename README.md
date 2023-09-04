@@ -28,12 +28,12 @@ It also contains an extensive online evaluation suite designed to help get signa
 
 As an example, to pretrain SIE use the following command
 ```bash
-python main.py --experience SIE --exp-dir EXP_ROOT/SIE --root-log-dir EXP_ROOT/logs/ --epochs 2000 --arch resnet18 --equi 256 --batch-size 1024 --base-lr 0.2 --dataset-root DATA_FOLDER --images-file ./data/train_images.npy --labels-file ./data/train_labels.npy --sim-coeff 10 --std-coeff 10 --cov-coeff 1 --mlp 2048-2048-2048 --equi-factor 0.45 --hypernetwork linear
+python main.py --experience SIE --exp-dir EXP_ROOT/SIE --root-log-dir EXP_ROOT/logs/ --epochs 2000 --arch resnet18 --equi 256 --batch-size 1024 --base-lr 1e-3 --dataset-root DATA_FOLDER --images-file ./data/train_images.npy --labels-file ./data/train_labels.npy --sim-coeff 10 --std-coeff 10 --cov-coeff 1 --mlp 2048-2048-2048 --equi-factor 0.45 --hypernetwork linear
 ```
 
 Which can be wrapped for SLURM as follows:
 ```bash
-sbatch --partition=PARTITION --job-name=SIE --nodes=1 --gpus-per-node=8 --cpus-per-task=N_CPUs --mem=MEM --time=48:00:00 --output=EXP_ROOT/SIE/log_%j.out --error=EXP_ROOT/SIE/log_%j.err --signal=USR1@60 --open-mode=append --wrap="srun python main.py --experience SIE --exp-dir EXP_ROOT/SIE --root-log-dir EXP_ROOT/logs/ --epochs 2000 --arch resnet18 --equi 256 --batch-size 1024 --base-lr 0.2 --dataset-root DATA_FOLDER --images-file ./train_images.npy --labels-file ./train_labels.npy --sim-coeff 10 --std-coeff 10 --cov-coeff 1 --mlp 2048-2048-2048 --equi-factor 0.45 --hypernetwork linear"
+sbatch --partition=PARTITION --job-name=SIE --nodes=1 --gpus-per-node=8 --cpus-per-task=N_CPUs --mem=MEM --time=48:00:00 --output=EXP_ROOT/SIE/log_%j.out --error=EXP_ROOT/SIE/log_%j.err --signal=USR1@60 --open-mode=append --wrap="srun python main.py --experience SIE --exp-dir EXP_ROOT/SIE --root-log-dir EXP_ROOT/logs/ --epochs 2000 --arch resnet18 --equi 256 --batch-size 1024 --base-lr 1e-3 --dataset-root DATA_FOLDER --images-file ./train_images.npy --labels-file ./train_labels.npy --sim-coeff 10 --std-coeff 10 --cov-coeff 1 --mlp 2048-2048-2048 --equi-factor 0.45 --hypernetwork linear"
 ```
 Adjusting parameters according to your cluster.
 

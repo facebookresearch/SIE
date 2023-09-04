@@ -11,9 +11,9 @@ import torch.nn.functional as F
 from torch import nn
 import torch.distributed as dist
 
-import predictors
-import resnet
-import hypernetwork
+import src.predictors as predictors
+import src.resnet as resnet
+import src.hypernetwork as hypernetwork
 
 
 #-------------------- Online evaluator -------------------

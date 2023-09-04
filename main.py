@@ -21,8 +21,8 @@ from torch.utils.tensorboard import SummaryWriter
 
 #import augmentations as aug
 
-import dataset as ds
-import models as m
+import src.dataset as ds
+import src.models as m
 from copy import deepcopy
 
 parser = argparse.ArgumentParser()
@@ -36,7 +36,7 @@ parser.add_argument("--experience", type=str, choices=["SIENoVar","SIE","SIEOnly
                                                         default="SIE")
 parser.add_argument("--hypernetwork", type=str, choices=["linear","deep"],default="linear")
 # Only for when using an expander
-parser.add_argument("--mlp", default="1024-1024-1024")
+parser.add_argument("--mlp", default="2048-2048-2048")
 #Predictor architecture, in format "intermediate1-intermediate2-..."
 parser.add_argument("--predictor", default="")
 parser.add_argument("--pred-size-in",type=int, default=10)

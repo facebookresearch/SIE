@@ -37,11 +37,11 @@ class Dataset3DIEBench(Dataset):
         label = self.labels[i]
         # Latent vector creation
         views = np.random.choice(50,2, replace=False)
-        img_1 = self.get_img(self.dataset_root + self.samples[i]+ f"/image_{views[0]}.jpg")
-        img_2 = self.get_img(self.dataset_root + self.samples[i]+ f"/image_{views[1]}.jpg")         
+        img_1 = self.get_img(self.dataset_root / self.samples[i][1:] / f"image_{views[0]}.jpg")
+        img_2 = self.get_img(self.dataset_root / self.samples[i][1:] / f"image_{views[1]}.jpg")         
     
-        angles_1 =np.load(self.dataset_root + self.samples[i]+ f"/latent_{views[0]}.npy")[:3].astype(np.float32)
-        angles_2 =np.load(self.dataset_root + self.samples[i]+ f"/latent_{views[1]}.npy")[:3].astype(np.float32)
+        angles_1 =np.load(self.dataset_root / self.samples[i][1:] / f"latent_{views[0]}.npy")[:3].astype(np.float32)
+        angles_2 =np.load(self.dataset_root / self.samples[i][1:] / f"latent_{views[1]}.npy")[:3].astype(np.float32)
         rot_1 = R.from_euler("xyz",angles_1)
         rot_2 = R.from_euler("xyz",angles_2)
         rot_1_to_2 = rot_1.inv()*rot_2
@@ -80,11 +80,11 @@ class Dataset3DIEBenchAll(Dataset):
         label = self.labels[i]
         # Latent vector creation
         views = np.random.choice(50,2, replace=False)
-        img_1 = self.get_img(self.dataset_root + self.samples[i]+ f"/image_{views[0]}.jpg")
-        img_2 = self.get_img(self.dataset_root + self.samples[i]+ f"/image_{views[1]}.jpg")         
+        img_1 = self.get_img(self.dataset_root / self.samples[i][1:] / f"image_{views[0]}.jpg")
+        img_2 = self.get_img(self.dataset_root / self.samples[i][1:] / f"image_{views[1]}.jpg")         
     
-        latent_1 =np.load(self.dataset_root + self.samples[i]+ f"/latent_{views[0]}.npy").astype(np.float32)
-        latent_2 =np.load(self.dataset_root + self.samples[i]+ f"/latent_{views[1]}.npy").astype(np.float32)
+        latent_1 =np.load(self.dataset_root / self.samples[i][1:] / f"latent_{views[0]}.npy").astype(np.float32)
+        latent_2 =np.load(self.dataset_root / self.samples[i][1:] / f"latent_{views[1]}.npy").astype(np.float32)
         angles_1 = latent_1[:3]
         angles_2 = latent_2[:3]
         rot_1 = R.from_euler("xyz",angles_1)
@@ -129,11 +129,11 @@ class Dataset3DIEBenchRotColor(Dataset):
         label = self.labels[i]
         # Latent vector creation
         views = np.random.choice(50,2, replace=False)
-        img_1 = self.get_img(self.dataset_root + self.samples[i]+ f"/image_{views[0]}.jpg")
-        img_2 = self.get_img(self.dataset_root + self.samples[i]+ f"/image_{views[1]}.jpg")         
+        img_1 = self.get_img(self.dataset_root / self.samples[i][1:] / f"image_{views[0]}.jpg")
+        img_2 = self.get_img(self.dataset_root / self.samples[i][1:] / f"image_{views[1]}.jpg")         
     
-        latent_1 =np.load(self.dataset_root + self.samples[i]+ f"/latent_{views[0]}.npy").astype(np.float32)
-        latent_2 =np.load(self.dataset_root + self.samples[i]+ f"/latent_{views[1]}.npy").astype(np.float32)
+        latent_1 =np.load(self.dataset_root / self.samples[i][1:] / f"latent_{views[0]}.npy").astype(np.float32)
+        latent_2 =np.load(self.dataset_root / self.samples[i][1:] / f"latent_{views[1]}.npy").astype(np.float32)
         angles_1 = latent_1[:3]
         angles_2 = latent_2[:3]
         rot_1 = R.from_euler("xyz",angles_1)
